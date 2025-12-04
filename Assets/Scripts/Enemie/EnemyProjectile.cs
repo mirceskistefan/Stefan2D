@@ -18,5 +18,12 @@ public class EnemyProjectile : EnemyDamage
         transform.Translate(movementSpeed, 0, 0);
 
         lifetime += Time.deltaTime;
+        if (lifetime > resetTime)
+            gameObject.SetActive(false);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        gameObject.SetActive(false);
     }
 }
